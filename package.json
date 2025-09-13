@@ -1,7 +1,7 @@
 {
   "name": "e-commerce",
   "version": "1.0.0",
-  "type":"module",
+  "type": "module",
   "private": true,
   "workspaces": [
     "gateway",
@@ -12,7 +12,14 @@
   ],
   "main": "index.js",
   "scripts": {
-    
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "dev:all": "concurrently \"npm run dev:gateway\" \"npm run dev:user\" \"npm run dev:product\" \"npm run dev:cart\" \"npm run dev:wishlist\"",
+    "dev:gateway": "npm run dev --workspace gateway",
+    "dev:user": "npm run dev --workspace userService",
+    "dev:product": "npm run dev --workspace productService",
+    "dev:cart": "npm run dev --workspace cartService",
+    "dev:wishlist": "npm run dev --workspace wishlistService",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -20,6 +27,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "dotenv": "^17.2.2",
     "express": "^5.1.0"
   },
   "devDependencies": {
