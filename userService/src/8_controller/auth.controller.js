@@ -1,4 +1,8 @@
-import { loginService, registerService } from "../9_service/auth.service.js";
+import {
+  deleteService,
+  loginService,
+  registerService,
+} from "../9_service/auth.service.js";
 
 export const registerController = async (req, res) => {
   try {
@@ -18,16 +22,28 @@ export const loginController = async (req, res) => {
   try {
     const loginCredentials = req.body;
     const response = await loginService(loginCredentials);
-    return res
-      .status(200)
-      .send({
-        message: response.message,
-        accessToken: response.accessToken,
-        userDetails: response.userDetails,
-      });
+    return res.status(200).send({
+      message: response.message,
+      accessToken: response.accessToken,
+      userDetails: response.userDetails,
+    });
   } catch (error) {
     return res
       .status(400)
       .send({ message: "Login not Successful", error: error.message });
+  }
+};
+
+export const deleteController = async (req, res) => {
+  try {
+    const { password } = req.body;
+    const userDetails = req.loggedInUser;
+
+    const response = await deleteService(userDetails, password);
+    return res.status(200).send({ message: response.message });
+  } catch (error) {
+    return res
+      .status(400)
+      .send({ message: "Unable to Delete", error: error.message });
   }
 };

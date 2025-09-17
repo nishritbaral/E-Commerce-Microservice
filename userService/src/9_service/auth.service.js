@@ -30,7 +30,7 @@ export const loginService = async (loginCredentials) => {
     throw new Error("Password is Incorrect");
   }
 
-  const payload = { email: user.email };
+  const payload = { id: user._id, email: user.email };
   const token = generateToken(payload);
 
   user.password = undefined;
@@ -40,4 +40,27 @@ export const loginService = async (loginCredentials) => {
     accessToken: token,
     userDetails: user,
   };
+};
+
+export const deleteService = async (userDetails, plainPassword) => {
+  const userId = userDetails.id;
+
+  const user = await userTable.findById(userId);
+  if (!user) {
+    throw new Error("User doesn't Exist");
+  }
+
+  const hashedPassword = user.password;
+
+  const isPasswordCorrect = await comparePassword(
+    plainPassword,
+    hashedPassword
+  );
+  if (!isPasswordCorrect) {
+    throw new Error("Password is Incorrect.");
+  }
+
+  await userTable.findByIdAndDelete(userId);
+  return { message: "User deleted Successfully " };
+  // TODO: Need to add deleting Product and cart of the deleted user as well
 };
