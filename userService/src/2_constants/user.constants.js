@@ -1,5 +1,5 @@
 const USER_CONSTANTS = {
-  GENDER: ["male", "female", "other"],
+  GENDERS: ["male", "female", "other"],
   ROLES: ["buyer", "seller"],
 };
 

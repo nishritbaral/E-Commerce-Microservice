@@ -30,17 +30,24 @@ const userSchema = new mongoose.Schema({
   },
   dob: {
     type: Date,
+    required: true,
     max: Date.now(),
   },
   gender: {
     type: String,
-    enum: USER_CONSTANTS.GENDER,
+    required: true,
+    enum: USER_CONSTANTS.GENDERS,
   },
   role: {
     type: String,
+    required: true,
     enum: USER_CONSTANTS.ROLES,
   },
-  address: String,
+  address: {
+    type: String,
+    required: true,
+    trim: true,
+  },
 });
 
 const userTable = mongoose.model("user", userSchema);

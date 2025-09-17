@@ -1,4 +1,4 @@
-import { hashPassword } from "../5_utils/passwordHash.js";
+import { hashPassword } from "../6_utils/passwordHash.js";
 import userTable from "../3_models/user.schema.js";
 
 export const registerService = async (newUser) => {
