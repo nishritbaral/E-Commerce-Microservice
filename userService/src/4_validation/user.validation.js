@@ -11,3 +11,8 @@ export const registrationValidationSchema = yup.object({
   role: yup.string().required().oneOf(USER_CONSTANTS.ROLES),
   address: yup.string().required().trim(),
 });
+
+export const loginValidationSchema = yup.object({
+  email: yup.string().required().email().trim().lowercase().max(255),
+  password: yup.string().required().trim().min(8).max(30),
+});

@@ -4,7 +4,10 @@ import {
   loginController,
 } from "../8_controller/auth.controller.js";
 import validateReqBody from "../5_middleware/validate.req.body.js";
-import { registrationValidationSchema } from "../4_validation/user.validation.js";
+import {
+  loginValidationSchema,
+  registrationValidationSchema,
+} from "../4_validation/user.validation.js";
 
 const router = express.Router();
 
@@ -14,6 +17,6 @@ router.post(
   registerController
 );
 
-router.post("/login", loginController);
+router.post("/login", validateReqBody(loginValidationSchema), loginController);
 
 export { router as authRoutes };
