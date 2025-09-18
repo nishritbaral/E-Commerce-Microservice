@@ -5,7 +5,6 @@ import cartProxy from "./services/cart/proxy.js";
 import wishlistProxy from "./services/wishlist/proxy.js";
 
 const app = express();
-app.use(express.json());
 
 app.use("/user", userProxy);
 app.use("/product", productProxy);
