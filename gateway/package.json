@@ -2,7 +2,7 @@
   "name": "gateway",
   "version": "1.0.0",
   "type": "module",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
@@ -11,5 +11,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "http-proxy-middleware": "^3.0.5"
+  }
 }
