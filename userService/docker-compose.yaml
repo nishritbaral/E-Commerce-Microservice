@@ -3,7 +3,11 @@ version: "3.9"
 services:
   app:
     build: .
-    image:
+    image: userservice:1.0
+    ports:
+      - 8001:8001
+    depends_on:
+      - mongo
 
   mongo:
     image: mongo
@@ -12,7 +16,10 @@ services:
     ports:
       - 27017:27017
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_ROOT_USERNAME: franky36
+      MONGO_INITDB_ROOT_PASSWORD: Franky5
     volumes:
-      - ./db_data/:/data/db/
+      - e-commerce:/user
+
+volumes:
+  e-commerce:
