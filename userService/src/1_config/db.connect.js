@@ -5,8 +5,9 @@ const connectDB = async () => {
   const dbUserName = process.env.DB_USERNAME;
   const dbPassword = process.env.DB_PASSWORD;
   const dbHosts = process.env.DB_HOSTS;
+  const dbOptions = process.env.DB_OPTIONS;
 
-  const mongoDbConnectionURL = `mongodb://${dbUserName}:${dbPassword}@${dbHosts}/${dbName}`;
+  const mongoDbConnectionURL = `mongodb://${dbUserName}:${dbPassword}@${dbHosts}/${dbName}?${dbOptions}`;
 
   try {
     await mongoose.connect(mongoDbConnectionURL);
