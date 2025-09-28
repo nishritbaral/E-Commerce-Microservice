@@ -1,6 +1,10 @@
 version: "3.9"
 
 services:
-  app:
+  gateway:
     build: .
-    image:
+    image: gateway:1.0
+    ports:
+      - 8000:8000
+    depends_on:
+      - userservice:1.0

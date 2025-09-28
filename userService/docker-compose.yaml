@@ -1,7 +1,7 @@
 version: "3.9"
 
 services:
-  app:
+  userservice:
     build: .
     image: userservice:1.0
     ports:
