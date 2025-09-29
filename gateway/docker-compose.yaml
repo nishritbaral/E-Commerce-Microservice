@@ -6,5 +6,3 @@ services:
     image: gateway:1.0
     ports:
       - 8000:8000
-    depends_on:
-      - userservice:1.0

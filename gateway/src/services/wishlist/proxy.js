@@ -1,7 +1,7 @@
 import { createProxyMiddleware } from "http-proxy-middleware";
 
 const wishlistProxy = createProxyMiddleware({
-  target: "http://localhost:8004",
+  target: "http://wishlistservicet:8004",
   changeOrigin: true,
   pathRewrite: { "^/wishlist": "" },
 });

@@ -1,7 +1,7 @@
 import { createProxyMiddleware } from "http-proxy-middleware";
 
 const userProxy = createProxyMiddleware({
-  target: "http://localhost:8001",
+  target: "http://userservice:8001",
   changeOrigin: true,
   pathRewrite: { "^/user": "" },
 });
