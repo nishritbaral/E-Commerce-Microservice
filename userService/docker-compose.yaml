@@ -19,7 +19,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: franky36
       MONGO_INITDB_ROOT_PASSWORD: Franky5
     volumes:
-      - e-commerce:/user
+      - e-commerce:/data/db
 
 volumes:
   e-commerce:
