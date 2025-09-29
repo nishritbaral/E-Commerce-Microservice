@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+
+  gateway:
+      build: ./gateway
+      image: gateway:1.0
+      ports:
+        - 8000:8000
+
+  userservice:
+    build: ./userservice
+    image: userservice:1.0
+    ports:
+      - 8001:8001
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    restart: always
+    container_name: mongo
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: franky36
+      MONGO_INITDB_ROOT_PASSWORD: Franky5
+    volumes:
+      - e-commerce:/data/db
+
+volumes:
+  e-commerce:
