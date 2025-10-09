@@ -1,11 +1,16 @@
 import express from "express";
+import {
+  addController,
+  deleteController,
+  updateController,
+} from "../6_controller/product.controller.js";
 
 const router = express.Router();
 
-router.post("/add", () => {});
+router.post("/add", addController);
 
-router.delete("/delete", () => {});
+router.delete("/delete", deleteController);
 
-router.put("/update", () => {});
+router.put("/update", updateController);
 
 export { router as productRoutes };
