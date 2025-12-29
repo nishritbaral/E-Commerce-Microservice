@@ -14,4 +14,3 @@ router.delete("/delete/:id", itemDeleteController);
 router.put("/update", itemUpdateController);
 
 export { router as itemRoutes };
-``

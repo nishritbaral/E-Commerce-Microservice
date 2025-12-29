@@ -3,7 +3,8 @@ import { addService, deleteService } from "../8_service/item.service";
 export const itemAddController = async () => {
   try {
     const productData = req.body;
-    const response = await addService(productData);
+    const loggedInUserId = req.loggedInUserId;
+    const response = await addService(productData, loggedInUserId);
     return res.status(200).send({ message: response.message });
   } catch (error) {
     return res
@@ -15,7 +16,8 @@ export const itemAddController = async () => {
 export const itemDeleteController = async () => {
   try {
     const productId = req.params.id;
-    const response = await deleteService(productId);
+    const loggedInUserId = req.loggedInUserId;
+    const response = await deleteService(productId, loggedInUserId);
     return res.status(200).send({ message: response.message });
   } catch (error) {
     return res
@@ -24,4 +26,7 @@ export const itemDeleteController = async () => {
   }
 };
 
-export const itemUpdateController = () => {};
+export const itemUpdateController = () => {
+  try {
+  } catch (error) {}
+};
